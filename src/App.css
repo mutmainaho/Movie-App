@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    background-color: #22254b;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    color: antiquewhite;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header{
+    background-color:#373b69 ;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.search{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    
+    font-family: inherit;
+    font-size: 1.4rem;
+    padding: 0.5rem 2.5rem;
+    color: #22254b;
+    
+}
+.root{
+    display: flex;
+    flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.movie{
+    
+    width: 240px;
+    margin: 1rem;
+    background-color: #373b69; 
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+.movie img{
+    max-width: 100%;
+}
+.movie-container{
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.movie-overview{
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: antiquewhite;
+    color: #22254b;
+    padding: 1rem;
+    transform: translateY(102%);
+    transition:transform 0.3s ease-in-out;
+    overflow: auto;
+    max-height: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2);
 }
+
+.movie:hover .movie-overview{
+    transform: translateY(0%);
+}
+
