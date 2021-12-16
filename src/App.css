@@ -28,6 +28,12 @@ header{
     color: #22254b;
     
 }
+button{
+    border-radius: 10px;
+    font-family: inherit;
+    padding: 0.5rem 1.5rem;
+    color: #000000;
+}
 .root{
     display: flex;
     flex-direction: column;

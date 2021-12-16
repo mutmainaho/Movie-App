@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header';
 import Movie from './components/Movie';
@@ -6,21 +6,21 @@ import Movie from './components/Movie';
 
 function App() {
  const[movies, setMovies] = useState([]);
+
+ const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=3924c61463cb07d286ca7c674effbaf6&language=en-US&page=1&include_adult=false`
+
  
 
-  useEffect(()=>{
-    const fetchMovie = async () => 
-      await fetch (`https://api.themoviedb.org/3/movie/popular?api_key=3924c61463cb07d286ca7c674effbaf6&language=en-US&page=1`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-       setMovies(data.results);
-        
-      });
+  
 
-    fetchMovie();
-
-  }, [])
+  const fetchMovie = async (value) => 
+   await fetch (SEARCH_API + `&query=${value}`)
+   .then(res => res.json())
+   .then(data => {
+     console.log(data)
+    setMovies(data.results);
+     
+   });
 
 
   
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-     <Header/>
+     <Header handleSearch={fetchMovie}/>
     <div className='movie-container'>
       {movies.length > 0 && movies.map((movie)=>
       <Movie key={movie.id} {...movie}/>)}

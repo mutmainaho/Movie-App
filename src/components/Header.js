@@ -1,22 +1,47 @@
-import React from 'react'
-
-//const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false'
+import React ,{useEffect,useState} from 'react'
 
 
-function Header() {
-    //const[Search,setSearch]= useState("");
+function Header({handleSearch=()=>{
 
+}}) {
+   const[search,setSearch]= useState("all");
+   
+
+   
+
+
+
+   const handleOnSubmit=(e)=>{
+     e.preventDefault();
+
+
+    handleSearch(search);
+
+
+   }
+  
+
+
+
+   useEffect(()=>{
+    handleSearch(search);
+
+  }, [])
 
 
     return (
         <div>
           <header >
-              <form  > 
+              <form onSubmit= {handleOnSubmit}> 
               <input className="search" type="text"
                placeholder="search..."
-               
+               value= {search}
+               onChange= {(e)=>
+              setSearch(e.target.value)}
                />
+                 <button type='submit'>submit</button>
               </form>
+            
              
               </header> 
         </div>
